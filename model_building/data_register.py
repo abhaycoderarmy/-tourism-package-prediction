@@ -2,7 +2,7 @@ import os
 from huggingface_hub import HfApi
 
 
-HF_USERNAME = "abhayfps"          
+HF_USERNAME = "abhayfps1"          
 DATASET_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction"
 
 LOCAL_DATA_PATH = "data/tourism.csv"

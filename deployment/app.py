@@ -15,7 +15,7 @@ from huggingface_hub import hf_hub_download
 # ---------------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------------
-HF_USERNAME = "abhayfps"          # <-- TODO: replace with your HF username
+HF_USERNAME = "abhayfps1"          # <-- TODO: replace with your HF username
 MODEL_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction-model"
 LOCAL_MODEL_PATH = "best_tourism_model_v1.joblib"  # bundled alongside app.py
 

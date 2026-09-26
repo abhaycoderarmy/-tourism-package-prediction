@@ -2,7 +2,7 @@
 import os
 from huggingface_hub import HfApi
 
-HF_USERNAME = "abhayfps"         
+HF_USERNAME = "abhayfps1"         
 SPACE_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction-app"
 
 DEPLOYMENT_DIR = "deployment"

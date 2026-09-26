@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from huggingface_hub import hf_hub_download, HfApi
 
 
-HF_USERNAME = "abhayfps"         
+HF_USERNAME = "abhayfps1"         
 DATASET_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction"
 
 LOCAL_DATA_DIR = "data"
