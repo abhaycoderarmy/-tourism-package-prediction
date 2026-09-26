@@ -1,29 +1,11 @@
-"""
-Data Registration
-------------------
-Registers the raw tourism.csv dataset on the Hugging Face Hub so that every
-later pipeline stage (data prep, training) pulls from a single versioned
-source of truth instead of a local file.
-
-Usage:
-    python data_register.py
-
-Requires:
-    HF_TOKEN        - Hugging Face access token with "write" scope
-                       (set as an environment variable / GitHub secret)
-    HF_USERNAME     - your Hugging Face username (edit the constant below)
-"""
-
 import os
 from huggingface_hub import HfApi
 
-# ---------------------------------------------------------------------------
-# CONFIG - replace with your own Hugging Face username
-# ---------------------------------------------------------------------------
-HF_USERNAME = "abhayfps"          # <-- TODO: replace with your HF username
+
+HF_USERNAME = "abhayfps"          
 DATASET_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction"
 
-LOCAL_DATA_PATH = "tourism_project/data/tourism.csv"
+LOCAL_DATA_PATH = "data/tourism.csv"
 
 
 def main():

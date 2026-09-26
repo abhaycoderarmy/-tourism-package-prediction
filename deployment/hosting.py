@@ -1,27 +1,11 @@
-"""
-Hosting - push the Streamlit app to a Hugging Face Space
------------------------------------------------------------
-Uploads everything in tourism_project/deployment/ (app.py, Dockerfile,
-requirements.txt, and the trained model file) to a public Hugging Face
-Space so it goes live as the project's frontend.
-
-Usage:
-    python hosting.py
-
-Requires:
-    HF_TOKEN     - Hugging Face access token with "write" scope
-"""
 
 import os
 from huggingface_hub import HfApi
 
-# ---------------------------------------------------------------------------
-# CONFIG
-# ---------------------------------------------------------------------------
-HF_USERNAME = "abhayfps"          # <-- TODO: replace with your HF username
+HF_USERNAME = "abhayfps"         
 SPACE_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction-app"
 
-DEPLOYMENT_DIR = "tourism_project/deployment"
+DEPLOYMENT_DIR = "deployment"
 
 
 def main():

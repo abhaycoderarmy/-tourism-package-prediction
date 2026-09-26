@@ -1,33 +1,13 @@
-"""
-Data Preparation
------------------
-Loads the raw tourism dataset (from the Hugging Face dataset repo if HF_TOKEN
-is available, otherwise from the local data/ folder), cleans it, and produces
-a stratified train/test split ready for model training.
-
-Cleaning steps and why:
-    * Drop 'Unnamed: 0' and 'CustomerID'  -> identifiers, not predictive.
-    * Fix the 'Fe Male' typo in Gender    -> data entry error, same as 'Female'.
-    * Merge 'Unmarried' into 'Single' in MaritalStatus -> both describe the
-      same status; keeping them separate would artificially split the signal.
-    * Cast the target 'ProdTaken' to int.
-
-Usage:
-    python prep.py
-"""
-
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from huggingface_hub import hf_hub_download, HfApi
 
-# ---------------------------------------------------------------------------
-# CONFIG
-# ---------------------------------------------------------------------------
-HF_USERNAME = "abhayfps"          # <-- TODO: replace with your HF username
+
+HF_USERNAME = "abhayfps"         
 DATASET_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction"
 
-LOCAL_DATA_DIR = "tourism_project/data"
+LOCAL_DATA_DIR = "data"
 LOCAL_RAW_PATH = f"{LOCAL_DATA_DIR}/tourism.csv"
 
 TARGET = "ProdTaken"

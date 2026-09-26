@@ -1,16 +1,3 @@
-"""
-Model Training and Registration with Experimentation Tracking
----------------------------------------------------------------
-Trains several candidate classifiers to predict ProdTaken (whether a
-customer buys the Wellness Tourism Package), tracks every run with MLflow,
-selects the best model on held-out test F1 (the target class is imbalanced,
-~19% positive, so F1/recall matter more than raw accuracy), and saves /
-registers the winning pipeline.
-
-Usage:
-    python train.py
-"""
-
 import os
 import joblib
 import numpy as np
@@ -31,16 +18,14 @@ from sklearn.metrics import (
 from xgboost import XGBClassifier
 from huggingface_hub import hf_hub_download, HfApi
 
-# ---------------------------------------------------------------------------
-# CONFIG
-# ---------------------------------------------------------------------------
-HF_USERNAME = "abhayfps"          # <-- TODO: replace with your HF username
+
+HF_USERNAME = "abhayfps"         
 DATASET_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction"
 MODEL_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction-model"
 
-LOCAL_DATA_DIR = "tourism_project/data"
-MODEL_OUT_PATH = "tourism_project/model_building/best_tourism_model_v1.joblib"
-DEPLOYMENT_MODEL_PATH = "tourism_project/deployment/best_tourism_model_v1.joblib"
+LOCAL_DATA_DIR = "data"
+MODEL_OUT_PATH = "model_building/best_tourism_model_v1.joblib"
+DEPLOYMENT_MODEL_PATH = "deployment/best_tourism_model_v1.joblib"
 
 EXPERIMENT_NAME = "Tourism_Package_Prediction"
 
