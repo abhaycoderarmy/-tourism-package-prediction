@@ -1,41 +1,28 @@
+"""
+Hosting - verification only
+-----------------------------
+Hugging Face Spaces on the free cpu-basic tier now requires a PRO
+subscription for Docker/Gradio SDKs, so this project's frontend is hosted
+on Streamlit Community Cloud instead (connected directly to this GitHub
+repo, auto-redeploying on every push to main). This step just confirms
+the deployment files are all present.
+"""
 
 import os
-from huggingface_hub import HfApi
-
-HF_USERNAME = "abhayfps1"         
-SPACE_REPO_ID = f"{HF_USERNAME}/tourism-package-prediction-app"
 
 DEPLOYMENT_DIR = "deployment"
 
 
 def main():
-    hf_token = os.getenv("HF_TOKEN")
+    required = ["app.py", "requirements.txt", "Dockerfile", "best_tourism_model_v1.joblib"]
+    missing = [f for f in required if not os.path.exists(os.path.join(DEPLOYMENT_DIR, f))]
 
-    if not hf_token:
-        print(
-            "No HF_TOKEN found in the environment - skipping the push to "
-            "Hugging Face Spaces. Set HF_TOKEN (and HF_USERNAME above) and "
-            "re-run this script to deploy the app."
-        )
-        return
+    if missing:
+        print(f"Missing deployment files: {missing}")
+        raise SystemExit(1)
 
-    api = HfApi(token=hf_token)
-
-    api.create_repo(
-        repo_id=SPACE_REPO_ID,
-        repo_type="space",
-        space_sdk="docker",
-        private=False,
-        exist_ok=True,
-    )
-
-    api.upload_folder(
-        folder_path=DEPLOYMENT_DIR,
-        repo_id=SPACE_REPO_ID,
-        repo_type="space",
-    )
-
-    print(f"Deployment files pushed to https://huggingface.co/spaces/{SPACE_REPO_ID}")
+    print("All deployment files present and verified.")
+    print("Live frontend hosted on Streamlit Community Cloud (auto-redeploys on push to main).")
 
 
 if __name__ == "__main__":
